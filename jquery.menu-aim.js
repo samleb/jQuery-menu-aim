@@ -306,15 +306,16 @@
                 return 0;
             };
 
+        var rowSelector = options.rowSelector;
+
         /**
          * Hook up initial menu events
          */
         $menu
             .mouseleave(mouseleaveMenu)
-            .find(options.rowSelector)
-                .mouseenter(mouseenterRow)
-                .mouseleave(mouseleaveRow)
-                .click(clickRow);
+            .on('mouseenter', rowSelector, mouseenterRow)
+            .on('mouseleave', rowSelector, mouseleaveRow)
+            .on('click', rowSelector, clickRow);
 
         $(document).mousemove(mousemoveDocument);
 
